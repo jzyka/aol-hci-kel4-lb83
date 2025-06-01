@@ -52,79 +52,110 @@
       </div>
     </header>
 
-    <div class="section-detail">
+    <section class="profile-section">
       <div class="container">
-        <img src="./public/assets/kelas-lansia.png" class="hero-image"></img>
-
-        <div class="content">
-          <div class="main-content">
-            <h1>Kelas Gadget Untuk Lansia</h1>
-            <p class="instructor">Lansia Peduli</p>
-
-            <div class="requirements">
-              <h3>Persyaratan</h3>
-              <div class="benefits-section">
-                <div class="benefits-title">Benefits</div>
-                <div class="benefits-grid">
-                  <div class="benefit-item">
-                    <div class="benefit-title">Jenis Kelamin</div>
-                    <div class="benefit-value">Pria dan Wanita</div>
-                  </div>
-                  <div class="benefit-item">
-                    <div class="benefit-title">Umur</div>
-                    <div class="benefit-value">18-50 Tahun</div>
-                  </div>
-                  <div class="benefit-item">
-                    <div class="benefit-title">Lainnya</div>
-                    <div class="benefit-value">-</div>
-                  </div>
-                </div>
-              </div>
+        <div class="contain-profile">
+          <!-- Profile Card -->
+          <div class="profile-card">
+            <div class="profile-header">
+              <h2>Informasi Pribadi</h2>
             </div>
 
-            <div class="description">
-              <h3>Deskripsi</h3>
-              <p>
-                Membantu para lansia lebih akrab dan percaya diri dalam
-                menggunakan gadget. Relawan akan mengajarkan peserta lansia
-                dalam memahami fitur dasar smartphone, seperti cara menelepon,
-                penggunaan mengirim pesan, dan mengenal berbagai digital.
-              </p>
+            <div class="profile-image">
+              <img src="./public/assets/franz.png" />
+            </div>
+
+            <h1 class="profile-name">Franz Hermann</h1>
+
+            <div class="profile-details">
+              <div class="detail-item">
+                <span class="detail-label">Email</span>
+                <span class="detail-value">franzhermann@gmail.com</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Nomor Telepon</span>
+                <span class="detail-value">087778555990</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Jenis Kelamin</span>
+                <span class="detail-value">Pria</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Domisili</span>
+                <span class="detail-value">Jakarta</span>
+              </div>
+              <div class="detail-item full-width">
+                <span class="detail-label">Tanggal Lahir</span>
+                <span class="detail-value">30 September 1997</span>
+              </div>
             </div>
           </div>
 
-          <div class="sidebar">
-            <div class="sidebar-item">
-              <h4>Kategori:</h4>
-              <div class="tag">Teknologi</div>
-            </div>
-
-            <div class="sidebar-item">
-              <h4>Tanggal:</h4>
-              <p>20 November 2025</p>
-            </div>
-
-            <div class="sidebar-item">
-              <h4>Waktu:</h4>
-              <p>08.00 - 12.00 WIB</p>
-            </div>
-
-            <div class="sidebar-item">
-              <h4>Lokasi</h4>
-              <div class="location">
-                Balai RW 05, Jl Melati No. 8, Jakarta Selatan
-                <div class="distance">10 km dari anda</div>
+          <!-- Activities Card -->
+          <div class="activities-card">
+            <div class="activities-header">
+              <h2 class="activities-title">Aktivitas</h2>
+              <div class="tabs">
+                <div class="tab active" data-tab="sedang-berjalan">
+                  Sedang Berjalan
+                </div>
+                <div class="tab" data-tab="riwayat">Riwayat</div>
               </div>
             </div>
 
-            <div class="action-buttons">
-              <a href="chat.html" class="btn btn-chat">Chat</a>
-              <a href="profile.html" class="btn btn-register">Daftar</a>
+            <div class="tab-content">
+              <div class="tab-panel active" id="sedang-berjalan">
+                <div class="activity-item">
+                  <div class="activity-image">
+                    <img src="./public/assets/kelas-lansia.png" />
+                  </div>
+                  <div class="activity-content">
+                    <h3 class="activity-title">Kelas Gadget untuk Lansia</h3>
+                    <p class="activity-subtitle">Lansia Peduli</p>
+                    <p class="activity-description">
+                      Pandu senam pagi ringan untuk menjaga kesehatan lansia.
+                    </p>
+                  </div>
+                  <button class="activity-button">Lebih Lengkap</button>
+                </div>
+              </div>
+
+              <div class="tab-panel" id="riwayat">
+                <div class="activity-item">
+                  <div class="activity-image">
+                    <img src="./public/assets/kelas-lansia.png" />
+                  </div>
+                  <div class="activity-content">
+                    <h3 class="activity-title">Workshop Teknologi Dasar</h3>
+                    <p class="activity-subtitle">Lansia Peduli</p>
+                    <p class="activity-description">
+                      Mengajarkan penggunaan smartphone dan aplikasi dasar untuk
+                      lansia.
+                    </p>
+                  </div>
+                  <button class="activity-button">Lihat Detail</button>
+                </div>
+
+                <div class="activity-item">
+                  <div class="activity-image">
+                    <img src="./public/assets/kelas-lansia.png" />
+                  </div>
+                  <div class="activity-content">
+                    <h3 class="activity-title">Senam Kesehatan Lansia</h3>
+                    <p class="activity-subtitle">Komunitas Sehat</p>
+                    <p class="activity-description">
+                      Memimpin sesi senam ringan untuk menjaga kebugaran lansia
+                      setiap minggu.
+                    </p>
+                  </div>
+                  <button class="activity-button">Lihat Detail</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
     <!-- Footer Section -->
     <footer class="footer-section">
