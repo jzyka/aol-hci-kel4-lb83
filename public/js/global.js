@@ -1,174 +1,174 @@
-// document.addEventListener("DOMContentLoaded", function () {
-//   initializeSearchFilter();
-// });
+document.addEventListener("DOMContentLoaded", function () {
+  initializeSearchFilter();
+});
 
-// function initializeSearchFilter() {
-//   // Get DOM elements
-//   const filterBtn = document.getElementById("filterBtn");
-//   const filterPopup = document.getElementById("filterPopup");
-//   const overlay = document.getElementById("overlay");
-//   const applyBtn = document.getElementById("applyBtn");
-//   const filterTags = document.querySelectorAll(".filter-tag");
-//   const requirementTags = document.querySelectorAll(".requirement-tag");
-//   const ageInputs = document.querySelectorAll(".age-input");
-//   const locationInput = document.querySelector(".location-input");
+function initializeSearchFilter() {
+  // Get DOM elements
+  const filterBtn = document.getElementById("filterBtn");
+  const filterPopup = document.getElementById("filterPopup");
+  const overlay = document.getElementById("overlay");
+  const applyBtn = document.getElementById("applyBtn");
+  const filterTags = document.querySelectorAll(".filter-tag");
+  const requirementTags = document.querySelectorAll(".requirement-tag");
+  const ageInputs = document.querySelectorAll(".age-input");
+  const locationInput = document.querySelector(".location-input");
 
-//   let isPopupOpen = false;
+  let isPopupOpen = false;
 
-//   // Check if elements exist before adding listeners
-//   if (!filterBtn || !filterPopup || !overlay || !applyBtn) {
-//     console.error("Required elements not found");
-//     return;
-//   }
+  // Check if elements exist before adding listeners
+  if (!filterBtn || !filterPopup || !overlay || !applyBtn) {
+    console.error("Required elements not found");
+    return;
+  }
 
-//   // Toggle filter popup
-//   filterBtn.addEventListener("click", function (e) {
-//     e.stopPropagation();
-//     togglePopup();
-//   });
+  // Toggle filter popup
+  filterBtn.addEventListener("click", function (e) {
+    e.stopPropagation();
+    togglePopup();
+  });
 
-//   // Close popup when clicking overlay
-//   overlay.addEventListener("click", function () {
-//     closePopup();
-//   });
+  // Close popup when clicking overlay
+  overlay.addEventListener("click", function () {
+    closePopup();
+  });
 
-//   // Close popup when clicking outside
-//   document.addEventListener("click", function (e) {
-//     if (!filterPopup.contains(e.target) && !filterBtn.contains(e.target)) {
-//       closePopup();
-//     }
-//   });
+  // Close popup when clicking outside
+  document.addEventListener("click", function (e) {
+    if (!filterPopup.contains(e.target) && !filterBtn.contains(e.target)) {
+      closePopup();
+    }
+  });
 
-//   // Category filter selection
-//   filterTags.forEach(function (tag) {
-//     tag.addEventListener("click", function () {
-//       filterTags.forEach(function (t) {
-//         t.classList.remove("selected");
-//       });
-//       tag.classList.add("selected");
-//     });
-//   });
+  // Category filter selection
+  filterTags.forEach(function (tag) {
+    tag.addEventListener("click", function () {
+      filterTags.forEach(function (t) {
+        t.classList.remove("selected");
+      });
+      tag.classList.add("selected");
+    });
+  });
 
-//   // Requirement filter selection
-//   requirementTags.forEach(function (tag) {
-//     tag.addEventListener("click", function () {
-//       const group = tag.closest(".requirement-group");
-//       const siblings = group.querySelectorAll(".requirement-tag");
-//       siblings.forEach(function (sibling) {
-//         sibling.classList.remove("selected");
-//       });
-//       tag.classList.add("selected");
-//     });
-//   });
+  // Requirement filter selection
+  requirementTags.forEach(function (tag) {
+    tag.addEventListener("click", function () {
+      const group = tag.closest(".requirement-group");
+      const siblings = group.querySelectorAll(".requirement-tag");
+      siblings.forEach(function (sibling) {
+        sibling.classList.remove("selected");
+      });
+      tag.classList.add("selected");
+    });
+  });
 
-//   // Apply filters
-//   applyBtn.addEventListener("click", function () {
-//     const selectedKategori = document.querySelector(".filter-tag.selected");
-//     const selectedGender = document.querySelector(".requirement-tag.selected");
+  // Apply filters
+  applyBtn.addEventListener("click", function () {
+    const selectedKategori = document.querySelector(".filter-tag.selected");
+    const selectedGender = document.querySelector(".requirement-tag.selected");
 
-//     const selectedFilters = {
-//       kategori: selectedKategori ? selectedKategori.dataset.kategori : null,
-//       lokasi: locationInput ? locationInput.value : null,
-//       gender: selectedGender ? selectedGender.dataset.gender : null,
-//       ageMin: ageInputs[0] ? ageInputs[0].value : null,
-//       ageMax: ageInputs[1] ? ageInputs[1].value : null,
-//     };
+    const selectedFilters = {
+      kategori: selectedKategori ? selectedKategori.dataset.kategori : null,
+      lokasi: locationInput ? locationInput.value : null,
+      gender: selectedGender ? selectedGender.dataset.gender : null,
+      ageMin: ageInputs[0] ? ageInputs[0].value : null,
+      ageMax: ageInputs[1] ? ageInputs[1].value : null,
+    };
 
-//     console.log("Applied filters:", selectedFilters);
+    console.log("Applied filters:", selectedFilters);
 
-//     // Trigger custom event for external handling
-//     const filterEvent = new CustomEvent("filtersApplied", {
-//       detail: selectedFilters,
-//     });
-//     document.dispatchEvent(filterEvent);
+    // Trigger custom event for external handling
+    const filterEvent = new CustomEvent("filtersApplied", {
+      detail: selectedFilters,
+    });
+    document.dispatchEvent(filterEvent);
 
-//     closePopup();
-//   });
+    closePopup();
+  });
 
-//   // Prevent popup from closing when clicking inside it
-//   filterPopup.addEventListener("click", function (e) {
-//     e.stopPropagation();
-//   });
+  // Prevent popup from closing when clicking inside it
+  filterPopup.addEventListener("click", function (e) {
+    e.stopPropagation();
+  });
 
-//   // Public functions for external access
-//   window.SearchFilter = {
-//     togglePopup: togglePopup,
-//     openPopup: openPopup,
-//     closePopup: closePopup,
-//     resetSection: resetSection,
-//     getSelectedFilters: getSelectedFilters,
-//   };
+  // Public functions for external access
+  window.SearchFilter = {
+    togglePopup: togglePopup,
+    openPopup: openPopup,
+    closePopup: closePopup,
+    resetSection: resetSection,
+    getSelectedFilters: getSelectedFilters,
+  };
 
-//   function togglePopup() {
-//     if (isPopupOpen) {
-//       closePopup();
-//     } else {
-//       openPopup();
-//     }
-//   }
+  function togglePopup() {
+    if (isPopupOpen) {
+      closePopup();
+    } else {
+      openPopup();
+    }
+  }
 
-//   function openPopup() {
-//     isPopupOpen = true;
-//     filterPopup.classList.add("show");
-//     overlay.classList.add("show");
+  function openPopup() {
+    isPopupOpen = true;
+    filterPopup.classList.add("show");
+    overlay.classList.add("show");
 
-//     // Trigger custom event
-//     const openEvent = new CustomEvent("filterPopupOpened");
-//     document.dispatchEvent(openEvent);
-//   }
+    // Trigger custom event
+    const openEvent = new CustomEvent("filterPopupOpened");
+    document.dispatchEvent(openEvent);
+  }
 
-//   function closePopup() {
-//     isPopupOpen = false;
-//     filterPopup.classList.remove("show");
-//     overlay.classList.remove("show");
+  function closePopup() {
+    isPopupOpen = false;
+    filterPopup.classList.remove("show");
+    overlay.classList.remove("show");
 
-//     // Trigger custom event
-//     const closeEvent = new CustomEvent("filterPopupClosed");
-//     document.dispatchEvent(closeEvent);
-//   }
+    // Trigger custom event
+    const closeEvent = new CustomEvent("filterPopupClosed");
+    document.dispatchEvent(closeEvent);
+  }
 
-//   function resetSection(section) {
-//     if (section === "kategori") {
-//       filterTags.forEach(function (tag) {
-//         tag.classList.remove("selected");
-//       });
-//       if (filterTags[0]) {
-//         filterTags[0].classList.add("selected"); // Select first one (Lingkungan)
-//       }
-//     } else if (section === "lokasi") {
-//       if (locationInput) {
-//         locationInput.value = "";
-//       }
-//     } else if (section === "persyaratan") {
-//       requirementTags.forEach(function (tag) {
-//         tag.classList.remove("selected");
-//       });
-//       ageInputs.forEach(function (input) {
-//         if (input) input.value = "";
-//       });
-//     }
-//   }
+  function resetSection(section) {
+    if (section === "kategori") {
+      filterTags.forEach(function (tag) {
+        tag.classList.remove("selected");
+      });
+      if (filterTags[0]) {
+        filterTags[0].classList.add("selected"); // Select first one (Lingkungan)
+      }
+    } else if (section === "lokasi") {
+      if (locationInput) {
+        locationInput.value = "";
+      }
+    } else if (section === "persyaratan") {
+      requirementTags.forEach(function (tag) {
+        tag.classList.remove("selected");
+      });
+      ageInputs.forEach(function (input) {
+        if (input) input.value = "";
+      });
+    }
+  }
 
-//   function getSelectedFilters() {
-//     const selectedKategori = document.querySelector(".filter-tag.selected");
-//     const selectedGender = document.querySelector(".requirement-tag.selected");
+  function getSelectedFilters() {
+    const selectedKategori = document.querySelector(".filter-tag.selected");
+    const selectedGender = document.querySelector(".requirement-tag.selected");
 
-//     return {
-//       kategori: selectedKategori ? selectedKategori.dataset.kategori : null,
-//       lokasi: locationInput ? locationInput.value : null,
-//       gender: selectedGender ? selectedGender.dataset.gender : null,
-//       ageMin: ageInputs[0] ? ageInputs[0].value : null,
-//       ageMax: ageInputs[1] ? ageInputs[1].value : null,
-//     };
-//   }
-// }
+    return {
+      kategori: selectedKategori ? selectedKategori.dataset.kategori : null,
+      lokasi: locationInput ? locationInput.value : null,
+      gender: selectedGender ? selectedGender.dataset.gender : null,
+      ageMin: ageInputs[0] ? ageInputs[0].value : null,
+      ageMax: ageInputs[1] ? ageInputs[1].value : null,
+    };
+  }
+}
 
-// // Global reset function for onclick attributes
-// function resetSection(section) {
-//   if (window.SearchFilter && window.SearchFilter.resetSection) {
-//     window.SearchFilter.resetSection(section);
-//   }
-// }
+// Global reset function for onclick attributes
+function resetSection(section) {
+  if (window.SearchFilter && window.SearchFilter.resetSection) {
+    window.SearchFilter.resetSection(section);
+  }
+}
 
 document.addEventListener("DOMContentLoaded", function () {
   // Add click tracking for buttons
