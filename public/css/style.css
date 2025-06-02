@@ -1472,3 +1472,15 @@ p {
   margin-left: 2rem;
   width: 95%;
 }
+
+.logout {
+  text-decoration: none;
+  color: white;
+  display: flex;
+  border-radius: 40px;
+  background-color: #4cc486;
+  padding: 0.5rem 2rem;
+  width: fit-content;
+  margin-left: auto;
+  margin-top: 1rem;
+}
