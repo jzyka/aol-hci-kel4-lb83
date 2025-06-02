@@ -1,10 +1,14 @@
 body {
   font-family: "Poppins", sans-serif;
   margin: 0;
-  /* width: 100vw; */
   background-color: #eefaf3;
   overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
 .container {
   display: flex;
   gap: 83px;
@@ -13,19 +17,33 @@ body {
   box-shadow: none;
   overflow: visible;
   max-width: 1275px;
-  max-height: 643px;
   width: 100%;
   padding: 20px;
+  align-items: center;
+  justify-content: center;
 }
+
 .login-header {
   text-decoration: none;
-  padding: 10px 3rem;
+  padding: 16px 3rem;
   width: 100%;
-  background-color: #4cc486;
+  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
   color: white;
   display: flex;
   justify-content: center;
-  border-radius: 40px;
+  align-items: center;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  box-sizing: border-box;
+}
+
+.login-header:hover {
+  background: linear-gradient(135deg, #38a169 0%, #2f855a 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(72, 187, 120, 0.3);
 }
 
 .left-section {
@@ -37,10 +55,8 @@ body {
   border-radius: 20px;
   box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.1);
   height: fit-content;
-}
-
-h1 {
-  margin: 0;
+  flex: 0 0 auto;
+  max-width: 550px;
 }
 
 .registration-form {
@@ -52,7 +68,7 @@ h1 {
   font-size: 2.5rem;
   font-weight: 600;
   color: #2d3748;
-  margin-bottom: 40px;
+  margin: 0 0 40px 0;
   text-align: left;
 }
 
@@ -65,9 +81,9 @@ h1 {
   gap: 15px;
 }
 
-/* .form-row .form-group {
+.form-row .form-group {
   flex: 1;
-} */
+}
 
 label {
   display: block;
@@ -80,13 +96,14 @@ label {
 input[type="text"],
 input[type="email"],
 input[type="password"] {
-  width: -webkit-fill-available;
+  width: 100%;
   padding: 15px 20px;
   border: 2px solid #8c8c8c;
   border-radius: 12px;
   font-size: 1rem;
   transition: all 0.3s ease;
   background-color: #ffffff;
+  box-sizing: border-box;
 }
 
 input[type="text"]:focus,
@@ -115,37 +132,6 @@ input.error:focus {
   min-height: 20px;
   display: flex;
   align-items: center;
-}
-
-.register-btn {
-  width: 100%;
-  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
-  color: white;
-  border: none;
-  padding: 16px;
-  border-radius: 12px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 10px;
-}
-
-.register-btn:hover {
-  background: linear-gradient(135deg, #38a169 0%, #2f855a 100%);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(72, 187, 120, 0.3);
-}
-
-.register-btn:active {
-  transform: translateY(0);
-}
-
-.register-btn:disabled {
-  background: #a0aec0;
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
 }
 
 .login-link {
@@ -195,8 +181,34 @@ input.error:focus {
   max-height: none;
 }
 
-/* Loading animation */
-.register-btn.loading {
-  position: relative;
-  color: transparent;
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+    gap: 40px;
+    max-width: 600px;
+  }
+  
+  .right-section {
+    min-height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+    gap: 20px;
+  }
+  
+  .left-section {
+    padding: 1.5rem;
+  }
+  
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
 }
