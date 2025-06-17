@@ -76,7 +76,7 @@
                 <div class="error-message" id="confirm-password-error"></div>
               </div>
             </div>
-            <a href="/home-registered.html" class="login-header">Daftar</a>
+            <button type="submit" class="login-header">Daftar</button>
           </form>
           <p class="login-link">
             Sudah punya akun? <a href="/login.html" id="masukLink">Masuk</a>
@@ -93,5 +93,86 @@
         </div>
       </div>
     </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("registrationForm");
+
+        const fields = {
+          nama: {
+            input: document.getElementById("nama"),
+            error: document.getElementById("nama-error"),
+            validate: (val) => val.trim() !== "",
+            message: "Nama tidak boleh kosong.",
+          },
+          email: {
+            input: document.getElementById("email"),
+            error: document.getElementById("email-error"),
+            validate: (val) => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(val.trim()),
+            message: "Format email tidak valid.",
+          },
+          "nomor-hp": {
+            input: document.getElementById("nomor-hp"),
+            error: document.getElementById("nomor-hp-error"),
+            validate: (val) => /^[0-9]{10,15}$/.test(val.trim()),
+            message: "Nomor HP harus berupa 10-15 digit angka.",
+          },
+          password: {
+            input: document.getElementById("password"),
+            error: document.getElementById("password-error"),
+            validate: (val) => val.length >= 6,
+            message: "Password minimal 6 karakter.",
+          },
+          "confirm-password": {
+            input: document.getElementById("confirm-password"),
+            error: document.getElementById("confirm-password-error"),
+            validate: () =>
+              document.getElementById("confirm-password").value ===
+              document.getElementById("password").value,
+            message: "Konfirmasi password tidak cocok.",
+          },
+        };
+
+        function showError(field, message) {
+          field.input.classList.add("input-error");
+          field.error.textContent = message;
+        }
+
+        function clearError(field) {
+          field.input.classList.remove("input-error");
+          field.error.textContent = "";
+        }
+
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          let valid = true;
+
+          for (const key in fields) {
+            const field = fields[key];
+            clearError(field);
+
+            const value = field.input.value;
+            if (!field.validate(value)) {
+              showError(field, field.message);
+              valid = false;
+            }
+          }
+
+          if (valid) {
+            // Simulate successful registration
+            window.location.href = "/home-registered.html";
+          }
+        });
+
+        // Live validation on input
+        for (const key in fields) {
+          const field = fields[key];
+          field.input.addEventListener("input", () => {
+            clearError(field);
+          });
+        }
+      });
+    </script>
   </body>
 </html>

@@ -47,7 +47,8 @@
               <div class="error-message" id="password-error"></div>
             </div>
 
-            <a href="/home-registered.html" class="login-header">Masuk</a>
+            <!-- Changed from <a> to <button> for proper form submission -->
+            <button type="submit" class="login-header">Masuk</button>
           </form>
 
           <p class="signup-link">
@@ -57,5 +58,41 @@
         </div>
       </div>
     </div>
+
+    <script>
+      const form = document.getElementById("loginForm");
+      const email = document.getElementById("email");
+      const password = document.getElementById("password");
+      const emailError = document.getElementById("email-error");
+      const passwordError = document.getElementById("password-error");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        let valid = true;
+        emailError.textContent = "";
+        passwordError.textContent = "";
+
+        if (!email.value.trim()) {
+          emailError.textContent = "Email tidak boleh kosong.";
+          valid = false;
+        } else if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value)) {
+          emailError.textContent = "Format email tidak valid.";
+          valid = false;
+        }
+
+        if (!password.value.trim()) {
+          passwordError.textContent = "Password tidak boleh kosong.";
+          valid = false;
+        } else if (password.value.length < 6) {
+          passwordError.textContent = "Password minimal 6 karakter.";
+          valid = false;
+        }
+
+        if (valid) {
+          window.location.href = "/home-registered.html";
+        }
+      });
+    </script>
   </body>
 </html>
